@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usecase2</title>
+    <style>
+        select{
+            border: none;
+            background-color: rgba(214, 210, 210, 0.733);
+            margin-right: 50px;
+            width: 200px;
+            height: 40px;
+
+        }
+        .font{
+            font-family: sans-serif;
+            margin: 5px;
+            float: left;
+            /* border: 1px solid red; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="font" >
+        <div  class="font" style="border: 1px solid rgb(182, 176, 176); padding: 20px;">
+            <h3 align="left">send massages</h3>
+            <div class="font">
+                <label for="name">name</label><br>
+                <select>
+                    <option value="0">-Select-</option>
+                </select>
+            </div>
+            <div class="font">    
+                <label for="class">class</label><br>
+                <select>
+                    <option value="0">-Select-</option>
+                </select>
+            </div>
+            <div class="font">
+                <label for="section">section</label><br>
+                <select>
+                    <option value="0">-Select-</option>
+                </select>
+            </div>
+            <p>Message</p>
+            <textarea style="border: none; background-color: rgba(214, 210, 210, 0.733); width: 800px; height: 300px;">Enter Messages</textarea><br>
+            <input type="button" value="Send" style="float:right; background-color: rgb(38, 172, 38); border: none; border-radius: 2px; margin-top: 10px; width: 60px; height: 30px;">
+        </div>
+        <div class="font" width="50%" style="border: 1px solid rgb(165, 160, 160); margin-left: 15px; padding: 25px;">
+            <h3 align="left">Quick massages</h3>
+            <div>
+                <p>phone no.</p>
+                <input type="text" value="Ex.9996663334" style="width: 200px; height: 30px; border: none; background-color:  rgba(214, 210, 210, 0.733);">
+                <p>massages</p>
+                <textarea name="text area" style="border: none; background-color: rgba(214, 210, 210, 0.733); width: 200px; height: 100px;">Enter Message(Max 160 Chars)</textarea><br>
+                <input type="button" value="send" style="float:right; background-color: rgb(38, 172, 38); border: none; border-radius: 2px; margin-top: 10px; width: 60px; height: 30px;">
+            </div>
+
+
+        </div>
+    </div>
+</body>
+
+</html>
