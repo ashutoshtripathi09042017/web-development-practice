@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Store API</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script type="text/JavaScript">
+    var products=[]; 
+    function bodyload() {
+        fetch("http://fakestoreapi.com/products")
+        .then(function(response) {
+            return response.json();            
+        }) 
+        .then(function(data) {
+            products=data;
+            for (var item of products){
+                var div= document.createElement("div");
+                div.className="card m-3";
+                div.style.width="300px";
+                div.innerHTML=`
+                <img src=${item.image} height="200" class="card-img-top">
+                <div class="card-header" style="height:200px">
+                <h4>${item.title}</h4>
+                </div>
+                <div class="card-footer">
+                <h4>${item.price}</h4>
+                </div>
+                `;
+                document.getElementById("container").appendChild(div);
+            }         
+        })
+        fetch("https://fakestoreapi.com/products/categories")
+        .then(function(response) {
+            return response.json();            
+        })
+        .then(function(data) {
+            for(var item of data){
+                var opt= document.createElement("option");
+                opt.text=item.toUpperCase();
+                opt.value=item;
+                document.getElementById("lstCategories").appendChild(opt);
+            }
+            
+        })
+    }
+    </script>
+</head>
+<body class="container-fluid" onload="bodyload()">
+    <h2 class="btn-dark text-white text-center p-2">Products Catalogs</h2>
+    <div class="row">
+        <div class="col-3">
+           <h3>Select a Category</h3>
+           <select class="form-select" id="lstCategories">
+
+           </select>
+        </div>
+        <div class="col-9">
+          <div class="d-flex flex-wrap flex-row" id="container">
+            
+          </div>
+        </div>
+     </div>
+
+</body>
+</html>
