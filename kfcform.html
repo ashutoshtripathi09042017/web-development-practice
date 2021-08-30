@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KFC Online Order</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    <script>
+        function orderclick(){
+            document.getElementById("lblname").innerHTML=document.getElementById("txtName").value;
+            document.getElementById("lblmobile").innerHTML=document.getElementById("txtMobile").value;
+
+            var mealName;
+            var adonName=" ";
+            var mealCost;
+            var adonCost;
+            var total;
+
+            var optBurger=document.getElementById("optBurger");
+            var optRoller=document.getElementById("optRoller");
+
+            var optWings=document.getElementById("optWings");
+            var optkrusher=document.getElementById("optkrusher");
+
+            if(optBurger.checked){
+                mealName=optBurger.value;
+                mealCost=120;
+            }
+
+            if (optRoller.checked){
+                mealName=optRoller.value;
+                mealCost=200;
+            }
+            
+            if(optWings.checked){
+                adonName+=optWings.value+'</br>';
+                adonCost=80;
+                mealCost=mealCost+adonCost;
+            }
+
+            if(optkrusher.checked){
+                adonName+=optkrusher.value+'</br>';
+                adonCost=60;
+                mealCost=mealCost+adonCost;
+            }
+            
+            total=mealCost;
+
+            document.getElementById("lblmeal").innerHTML=mealName;
+            document.getElementById("lbladon").innerHTML=adonName;
+            document.getElementById("lblamount").innerHTML=total+"&#8377";
+
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <header>
+        <img src="media/kfcposter.jpg" width="100%" height="250" alt="Path Error..!">
+        <!-- kfc poster -->
+    </header>
+
+    <section class="mt-2">
+        <div class="accordion" id="orderform">
+
+            <div class="accordion-item mb-2"><!--Customer Details-->
+                <div class="d-grid">
+                    <button class="btn btn-danger" data-bs-target="#details" data-bs-toggle="collapse">
+                        Customer Details
+                    </button>
+                </div>
+                <div class="collapse show fade" id="details" data-bs-parent="#orderform">
+                    <div class="accordion-body">
+                        <div>
+                            <label class="form-label">Your Name</label>
+                            <div>
+                                <input type="text" class="form-control" id="txtName">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="form-label">Mobile</label>
+                            <div>
+                                <input type="text" class="form-control" id="txtMobile">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="accordion-item mb-2">  <!--Your Meals-->
+                <div class="d-grid">
+                    <button class="btn btn-danger" data-bs-target="#Meal" data-bs-toggle="collapse">
+                        Select Your Meals
+                    </button>
+                </div>
+                <div class="collapse" id="Meal" data-bs-parent="#orderform">
+                    <div class="accodion-body">
+                        <div class="row text-center">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h2>OMG Burger</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <img src="media/kfcburgur.png" alt="Path Error..!" width="300" height="200">
+                                    </div>
+                                    <div class="card-footer">
+                                        <input type="radio" name="meal" value="OMG Burger" id="optBurger">
+                                        <label>&#8377 120/-</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h2>Wrap Star</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <img src="media/kfcWrapstar.jpg" alt="Path Error..!" width="300" height="200">
+                                    </div>
+                                    <div class="card-footer">
+                                        <input type="radio" name="meal" value="Wrap Star" id="optRoller">
+                                        <label>&#8377 200/-</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-2">
+                <div class="d-grid">
+                    <button class="btn btn-danger" data-bs-target="#adon" data-bs-toggle="collapse">
+                        Select Add-ON's
+                    </button>
+                </div>
+                <div class="collapse" id="adon" data-bs-parent="#orderform">
+                    <div class="accodion-body">
+                        <div class="row text-center">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h2>Cold Cofee</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <img src="media/kfccoldcoffe.jpg" alt="Path Error..!" width="300" height="200">
+                                    </div>
+                                    <div class="card-footer">
+                                        <input type="checkbox" value="Cold Cofee" id="optWings">
+                                        <label>&#8377 80/-</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h2>Krusher</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <img src="media/kfckrushers.jpg" alt="Path Error..!" width="300" height="200">
+                                    </div>
+                                    <div class="card-footer">
+                                        <input type="checkbox" value="Krusher" id="optkrusher">
+                                        <label>&#8377 60/-</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+            <div class="d-grid">
+                <button onclick="orderclick()" class="btn btn-danger" data-bs-target="#summary" data-bs-toggle="modal">Place Order</button>
+                <div class="modal fade" id="summary">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2>Bill Summary</h2>
+                                <button class="btn btn-close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <dl class="row">
+                                    <dt class="col-4">Name</dt>
+                                    <dd id="lblname" class="col-8 mb-3"></dd>
+                                    <dt class="col-4">Mobile</dt>
+                                    <dd id="lblmobile" class="col-8 mb-3"></dd>
+                                    <dt class="col-4">Selected Meal</dt>
+                                    <dd id="lblmeal" class="col-8 mb-3"></dd>
+                                    <dt class="col-4">Add-ON's</dt>
+                                    <dd id="lbladon" class="col-8 mb-3"></dd>
+                                    <dt class="col-4">Total Amount</dt>
+                                    <dd id="lblamount" class="col-8 mb-3"></dd>
+                                </dl>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
