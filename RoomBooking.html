@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Booking</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script>
+        function bill() {
+
+            var roomname;
+            var amenitiename = "";
+            var roomcost;
+            var amenitiecost;
+            var advamount = document.getElementById("amount").value;
+
+            document.getElementById("advanceamount").innerHTML=advamount;
+
+
+            var optdelux = document.getElementById("optdelux");
+            var optsuite = document.getElementById("optsuite");
+
+            var optac = document.getElementById("optac");
+            var optlocker = document.getElementById("optlocker");
+
+            if (optdelux.checked) {
+                roomname = optdelux.value;
+                roomcost = 2500;
+            }
+
+            if (optsuite.checked) {
+                roomname = optsuite.value;
+                roomcost = 4000;
+            }
+
+            if (optac.checked) {
+                amenitiename += optac.value + '</br>';
+                amenitiecost = 1000;
+                roomcost = roomcost + amenitiecost;
+            }
+
+            if (optlocker.checked) {
+                amenitiename += optlocker.value + '</br>';
+                amenitiecost = 300;
+                roomcost = roomcost + amenitiecost;
+            }
+
+            var total = (roomcost) * (document.getElementById("inputtotaldate").value);
+
+            var inputtotalperson = document.getElementById("inputtotalperson").value;
+
+
+
+
+            document.getElementById("customername").innerHTML = document.getElementById("inputcustomername").value;
+            document.getElementById("checkindate").innerHTML = document.getElementById("inputcheckdate").value;
+            document.getElementById("totaldays").innerHTML = document.getElementById("inputtotaldate").value;
+            document.getElementById("totalperson").innerHTML = document.getElementById("inputtotalperson").value;
+            document.getElementById("roomtype").innerHTML=roomname;
+            document.getElementById("amenities").innerHTML=amenitiename;
+            
+
+            if (inputtotalperson <= 2) {
+
+                var balence = total - advamount;
+                document.getElementById("balenceamount").innerHTML = balence+"&#8377";
+            } else {
+                total = total + (document.getElementById("inputtotalperson").value - 2) * 1000;
+                var balence = total - advamount;
+                document.getElementById("balenceamount").innerHTML = balence+"&#8377";
+            }
+
+
+        }
+        function payment() {
+            document.getElementById("success").innerHTML = `<i class="bi bi-check2-circle"></i> Payment Success...!`;
+        }
+
+
+    </script>
+</head>
+
+
+<body class="container-fluid" onbodyload="">
+
+    <header">
+        <div class="d-flex justify-content-between bg bg-dark m-1 rounded-2" style="height: 40px;">
+            <div>
+                <button class="btn btn-dark"><span class="bi bi-three-dots-vertical "></span> </button>
+            </div>
+            <div>
+                <h3 class="text-light">Book Your Room</h3>
+            </div>
+            <div class="input-group border-danger" style="width: 300px;">
+                <input type="search" class="form-control" placeholder="Search here">
+                <button class="btn btn-light border border-1"><span class="bi bi-search"></span></button>
+            </div>
+        </div>
+        <div class="m-1">
+            <img src="media/ho2.jpg" alt="Path Error..!" width="100%" height="300">
+        </div>
+        </header>
+
+
+
+
+        <section class="mt-2">
+            <div class="accordion" id="bookingform">
+
+                <div class="accordion-item mb-2">
+                    <!--for customer details-->
+                    <div class="d-grid">
+                        <button class="btn btn-dark form-control" data-bs-target="#details"
+                            data-bs-toggle="collapse">Customer Details</button>
+                    </div>
+                    <div class="collapse show fade" id="details" data-bs-parent="#bookingform">
+                        <div class="accordion-body">
+                            <div>
+                                <div>
+                                    <label><b>Customer Name</b> </label>
+                                    <input class="form-control" type="text" id="inputcustomername">
+                                </div>
+                                <div>
+                                    <label><b>Check in Date</b></label>
+                                    <input class="form-control" type="date" id="inputcheckdate">
+                                </div>
+                                <div>
+                                    <label><b>Total No of Date</b></label>
+                                    <input class="form-control" type="number" id="inputtotaldate">
+                                </div>
+                                <div">
+                                    <label><b>Total No of Person</b></label>
+                                    <input class="form-control" type="number" id="inputtotalperson">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-2">
+                <!--for select room type-->
+                <div class="d-grid">
+                    <button class="btn btn-dark form-control" data-bs-target="#roomtype1"
+                        data-bs-toggle="collapse">Select Room Type</button>
+                </div>
+                <div class="collapse" id="roomtype1" data-bs-parent="#bookingform">
+                    <div class="accordion-body">
+                        <div class="row text-center">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h2>Delux Room</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <img src="media/deluxroom.jpg" alt="Path Error...!" width="500" height="250">
+                                    </div>
+                                    <div class="card-footer">
+                                        <input type="radio" name="room" value="Delux Room" id="optdelux">
+                                        <label>&#8377 2500/-</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h2>Suite Room</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <img src="media/suiteroom.jpg" alt="Path Error..!" width="500" height="250">
+                                    </div>
+                                    <div class="card-footer">
+                                        <input type="radio" name="room" value="Suite Room" id="optsuite">
+                                        <label>&#8377 4000/-</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-2">
+                <!--for select amenities-->
+                <div class="d-grid">
+                    <button class="btn btn-dark form-control" data-bs-target="#amenities1"
+                        data-bs-toggle="collapse">Select Amenities</button>
+                </div>
+                <div class="collapse" id="amenities1" data-bs-parent="#bookingform">
+                    <div class="accordion-body">
+                        <div class="row text-center">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h2>A/C</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <img src="media/acroom1.jpg" alt="Path Error...!" width="500" height="250">
+                                    </div>
+                                    <div class="card-footer">
+                                        <input type="checkbox" id="optac" value="A/C">
+                                        <label>&#8377 1000/-</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h2>Locker</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <img src="media/lockerroom.jpg" alt="Path Error..!" width="500" height="250">
+                                    </div>
+                                    <div class="card-footer">
+                                        <input type="checkbox" id="optlocker" value="Locker">
+                                        <label>&#8377 300/-</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-2">
+                <!--for advance amount-->
+                <div class="d-grid">
+                    <button class="btn btn-dark form-control" data-bs-target="#advanceamount1"
+                        data-bs-toggle="collapse">Advance Amount</button>
+                </div>
+                <div class="collapse" id="advanceamount1" data-bs-parent="#bookingform">
+                    <div class="accordion-body">
+                        <label>Amount</label>
+                        <input type="text"  class="form-control" id="amount">
+                        <div class="d-flex justify-content-center m-3">
+                            <button onclick="payment()" class="btn btn-danger" id="makepayment">Make Payment</button>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <label class="text-success" id="success"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-2">
+                <!--for Register-->
+                <div class="d-grid">
+                    <button onclick="bill()" class="btn btn-dark form-control" data-bs-target="#summary"
+                        data-bs-toggle="modal">Register</button>
+                </div>
+                <div class="modal fade" id="summary">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2>Bill Summary</h2>
+                                <button class="btn btn-close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <dl class="row">
+                                    <dt class="col-4">Customer Name</dt>
+                                    <dd class="col-8 mb-3" id="customername"></dd>
+                                    <dt class="col-4">Check in Date</dt>
+                                    <dd class="col-8 mb-3" id="checkindate"></dd>
+                                    <dt class="col-4">Total No of date</dt>
+                                    <dd class="col-8 mb-3" id="totaldays"></dd>
+                                    <dt class="col-4">Total No of Person</dt>
+                                    <dd class="col-8 mb-3" id="totalperson"></dd>
+                                    <dt class="col-4">Room Type</dt>
+                                    <dd class="col-8 mb-3" id="roomtype"></dd>
+                                    <dt class="col-4">Amenities</dt>
+                                    <dd class="col-8 mb-3" id="amenities"></dd>
+                                    <dt class="col-4">Advance</dt>
+                                    <dd class="col-8 mb-3" id="advanceamount"></dd>
+                                    <dt class="col-4">Balence Amount</dt>
+                                    <dd class="col-8 mb-3" id="balenceamount"></dd>
+                                </dl>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
+                                <button class="btn btn-primary" data-bs-dismiss="modal">Print</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+        </section>
+
+
+
+
+
+
+
+        <script src="node_modules/jquery/dist/jquery.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
