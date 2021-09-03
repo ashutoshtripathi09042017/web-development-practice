@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Login</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        #passwordContainer {
+            display: none;
+        }
+    </style>
+    <script>
+        var userdetails = {
+            Email :"ashu123@gmail.com",
+            Mobile :"8360275605",
+            Password:"ashu2228"
+        };
+
+        var statusMessage = "";
+        function LoginClick() {
+            document.write("alshd")
+        }
+
+        function userclick() {
+            var UserName = document.getElementById("UserName").value;
+
+            var msg = document.getElementById("msg");
+
+            var usernameContainer = document.getElementById("usernameContainer");
+            var passwordContainer = document.getElementById("passwordContainer");
+
+            if (UserName == userdetails.Email) {
+                passwordContainer.style.display = "block";
+                usernameContainer.style.display = "none";
+                statusMessage = `Logged in With : ${UserName}`;
+                msg.innerHTML = "";
+            }
+            else if (UserName == userdetails.Mobile) {
+                passwordContainer.style.display = "block";
+                usernameContainer.style.display = "none";
+                statusMessage = `Logged in with Your Mobile : ${UserName}`;
+                msg.innerHTML = " ";
+            }
+            else {
+                msg.innerHTML = "Invalid email or mobile";
+            }
+
+        }
+
+        function LoginClick() {
+            var password = document.getElementById("password").value;
+            if (password == userdetails.Password) {
+                document.write(`${statusMessage}`);
+            } else {
+                document.getElementById("msg").innerHTML = "Invalid Password";
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="container-fluid d-grid justify-content-center align-items-center" style="height: 350px;">
+        <div>
+            <img src="media/amazon.png" alt="Path Error...!" height="40px" style="margin-left: 120px; margin-top: 5px;">
+        </div>
+        <div class="border border-1 p-3 rounded-1" style="width: 400px;">
+            <h1>Sign-In</h1>
+
+            <div class="mt-4" id="usernameContainer">
+                <label class="form-label">Email or mobile phone number</label>
+                <div>
+                    <input type="text" class="form-control" id="UserName">
+                </div>
+                <div class="d-grid mt-2">
+                    <button onClick="userclick()" class="btn btn-warning">continue</button>
+                </div>
+            </div>
+
+            <div class="mt-4" id="passwordContainer">
+                <label class="form-label">Enter your password</label>
+                <div>
+                    <input type="password" class="form-control" id="password">
+                </div>
+                <div class="d-grid mt-2">
+                    <button onClick="LoginClick()" class="btn btn-warning">Login</button>
+                </div>
+            </div>
+            <div class="mt-2 text-danger">
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
