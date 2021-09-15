@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create table dynamically</title>
+    <script>
+        var data = [
+            {Name : "Tv" , Price : "22000", Photo : "media/tv.png"},
+            {Name : "Burger", Price : "120", Photo :"media/kfcburgur.png"},
+            {Name : "A/C", Price : "30000", Photo : "media/acroom.jpg"}
+        ];
+
+        function bodyload() {
+            var tbody = document.getElementById("tbody");
+            for(var item of data){
+                var tr = document.createElement("tr");
+                var tdname = document.createElement("td");
+                var tdprice = document.createElement("td");
+                var tdphoto = document.createElement("td");
+
+                tdname.innerHTML=item.Name;
+                tdprice.innerHTML=item.Price;
+                
+                var image=document.createElement("img");
+                image.src=item.Photo;
+                image.height="50";
+                image.width="100";
+                tdphoto.appendChild(image);
+
+                tr.appendChild(tdname);
+                tr.appendChild(tdprice);
+                tr.appendChild(tdphoto);
+
+                tbody.appendChild(tr);
+
+            }            
+        }
+    </script>
+</head>
+<body onload="bodyload()">
+    <table border="1" width="400px">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Preview</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+</body>
+</html>
